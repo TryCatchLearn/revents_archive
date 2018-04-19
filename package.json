@@ -1,0 +1,47 @@
+{
+  "name": "revents",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "cuid": "^2.1.1",
+    "date-fns": "^1.29.0",
+    "firebase": "^4.12.1",
+    "google-map-react": "^0.34.0",
+    "history": "^4.7.2",
+    "moment": "^2.22.0",
+    "react": "^16.3.0",
+    "react-cropper": "^1.0.1",
+    "react-datepicker": "^1.4.0",
+    "react-dom": "^16.3.0",
+    "react-dropzone": "^4.2.9",
+    "react-infinite-scroller": "^1.1.3",
+    "react-lazyload": "^2.3.0",
+    "react-load-script": "0.0.6",
+    "react-loadable": "^5.3.1",
+    "react-places-autocomplete": "^6.1.3",
+    "react-redux": "^5.0.7",
+    "react-redux-firebase": "^2.0.6",
+    "react-redux-toastr": "^7.2.3",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.9",
+    "react-scripts": "1.1.2",
+    "redux": "^3.7.2",
+    "redux-auth-wrapper": "^2.0.2",
+    "redux-firestore": "^0.3.2",
+    "redux-form": "^7.3.0",
+    "redux-thunk": "^2.2.0",
+    "revalidate": "^1.2.0",
+    "semantic-ui-css": "2.2.14",
+    "semantic-ui-react": "^0.79.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.2",
+    "source-map-explorer": "^1.5.0"
+  }
+}
