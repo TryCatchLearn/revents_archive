@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Form, Segment, Button, Grid, Header } from 'semantic-ui-react';
 import { reduxForm, Field } from 'redux-form';
 import Script from 'react-load-script'
-import { composeValidators, combineValidators, isRequired, hasLengthGreaterThan } from 'revalidate';
+import { createValidator, composeValidators, combineValidators, isRequired, hasLengthGreaterThan } from 'revalidate';
 import cuid from 'cuid';
 import moment from 'moment';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
