@@ -1,30 +1,39 @@
 import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';    
-import thunk from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
+import { reduxFirestore, getFirestore } from 'redux-firestore';
+import thunk from 'redux-thunk';
 import rootReducer from '../reducers/rootReducer';
+import firebase from '../config/firebase';
 
-export const configureStore = (preloadedState) => {
-    const middlewares = [thunk];
-    const middlewareEnhancer = applyMiddleware(...middlewares);
+const rrfConfig = {
+  userProfile: 'users',
+  attachAuthIsReady: true,
+  useFirestoreForProfile: true
+};
 
-    const storeEnhancers = [middlewareEnhancer];
+export const configureStore = preloadedState => {
+  const middlewares = [thunk.withExtraArgument({ getFirebase, getFirestore })];
+  const middlewareEnhancer = applyMiddleware(...middlewares);
 
-    const composedEnhancer = composeWithDevTools(...storeEnhancers);
+  const storeEnhancers = [middlewareEnhancer];
 
-    const store = createStore(
-        rootReducer,
-        preloadedState,
-        composedEnhancer
-    );
+  const composedEnhancer = composeWithDevTools(
+    ...storeEnhancers,
+    reactReduxFirebase(firebase, rrfConfig),
+    reduxFirestore(firebase)
+  );
 
-    if (process.env.NODE_ENV !== 'production') {
-        if (module.hot) {
-            module.hot.accept('../reducers/rootReducer', () => {
-                const newRootReducer = require('../reducers/rootReducer').default;
-                store.replaceReducer(newRootReducer)
-            })
-        }
+  const store = createStore(rootReducer, preloadedState, composedEnhancer);
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (module.hot) {
+      module.hot.accept('../reducers/rootReducer', () => {
+        const newRootReducer = require('../reducers/rootReducer').default;
+        store.replaceReducer(newRootReducer);
+      });
     }
+  }
 
-    return store;
-}
+  return store;
+};
