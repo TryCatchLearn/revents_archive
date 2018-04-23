@@ -26,7 +26,7 @@ class PlaceInput extends Component {
       meta: { touched, error }
     } = this.props;
     return (
-      <Form.Field error={touched && !!error} with={width}>
+      <Form.Field error={touched && !!error} width={width}>
         <Script
           url="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeGFf-IvUPyRs-QWxYBQDIhWOSplEh6BA&libraries=places"
           onLoad={this.handleScriptLoaded}
