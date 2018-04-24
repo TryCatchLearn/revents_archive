@@ -1,5 +1,6 @@
 import React from 'react';
 import { Segment, List, Item, Label } from 'semantic-ui-react';
+import { Link } from 'react-router-dom'
 
 const EventDetailedSidebar = ({ attendees }) => {
   const isHost = false;
@@ -27,7 +28,7 @@ const EventDetailedSidebar = ({ attendees }) => {
           <Item.Image size="tiny" src={attendee.photoURL} />
           <Item.Content verticalAlign="middle">
             <Item.Header as="h3">
-              <a>{attendee.name}</a>
+              <Link to={`/profile/${attendee.id}`}>{attendee.displayName}</Link>
             </Item.Header>
           </Item.Content>
         </Item>
