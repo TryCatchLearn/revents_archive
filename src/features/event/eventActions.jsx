@@ -1,10 +1,9 @@
-import { toastr } from 'react-redux-toastr';
-import { DELETE_EVENT, FETCH_EVENTS } from './eventConstants';
-import { asyncActionError, asyncActionFinish, asyncActionStart } from '../async/asyncActions';
-import { fetchSampleData } from '../../app/data/mockApi';
-import { createNewEvent } from '../../app/common/util/helpers';
 import moment from 'moment';
+import { toastr } from 'react-redux-toastr';
+import { createNewEvent } from '../../app/common/util/helpers';
 import firebase from '../../app/config/firebase';
+import { asyncActionError, asyncActionFinish, asyncActionStart } from '../async/asyncActions';
+import { FETCH_EVENTS } from './eventConstants';
 
 export const createEvent = event => {
   return async (dispatch, getState, { getFirestore }) => {
