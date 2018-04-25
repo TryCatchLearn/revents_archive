@@ -22,7 +22,9 @@ const EventDetailedHeader = ({
   isHost,
   isGoing,
   goingToEvent,
-  cancelGoingToEvent
+  cancelGoingToEvent,
+  authenticated,
+  openModal
 }) => {
   return (
     <Segment.Group>
@@ -47,13 +49,17 @@ const EventDetailedHeader = ({
       <Segment attached="bottom">
         {!isHost && (
           <div>
-            {isGoing ? (
-              <Button onClick={() => cancelGoingToEvent(event)}>Cancel My Place</Button>
-            ) : (
-              <Button loading={loading} onClick={() => goingToEvent(event)} color="teal">
-                JOIN THIS EVENT
-              </Button>
-            )}
+            {isGoing && <Button onClick={() => cancelGoingToEvent(event)}>Cancel My Place</Button>}
+
+            {!isGoing && authenticated &&
+            <Button loading={loading} onClick={() => goingToEvent(event)} color="teal">
+              JOIN THIS EVENT
+            </Button>}
+
+            {!authenticated &&
+            <Button loading={loading} onClick={() => openModal('UnauthModal')} color="teal">
+              JOIN THIS EVENT
+            </Button>}
           </div>
         )}
         {isHost && (
